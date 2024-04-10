@@ -1,0 +1,24 @@
+RewriteEngine On
+
+# Exclure explicitement les dossiers 'assets', 'partials', et 'node_modules' de la réécriture
+RewriteRule ^(partials|node_modules)/ - [L]
+
+# Réécriture pour les fichiers PHP dans le dossier 'pages/admin'
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/(.*)$ pages/admin/$1.php [L]
+
+# Réécriture pour les fichiers PHP dans le dossier 'pages/user'
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^user/(.*)$ pages/user/$1.php [L]
+
+# Réécriture pour les fichiers PHP dans le dossier 'pages/partials'
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^partials/(.*)$ pages/partials/$1.php [L]
+
+# Réécriture pour les fichiers PHP dans le dossier 'pages'
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ pages/$1.php [L]
